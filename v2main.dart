@@ -27,7 +27,7 @@ class MonitoramentoSaudeApp extends StatelessWidget {
           '/inicio': (context) => TelaInicial(),
           '/dados': (context) => TelaDadosSaude(),
           '/historico': (context) => TelaHistorico(),
-          '/progresso': (context) => TelaProgresso(),  // Tela de Progresso
+          '/progresso': (context) => TelaProgresso(),  
         },
       ),
     );
@@ -38,7 +38,7 @@ class UserData extends ChangeNotifier {
   String? nome;
   String? email;
   int idade = 30;
-  List<UserHealthData> healthDataHistory = [];  // Agora armazenamos um histórico
+  List<UserHealthData> healthDataHistory = [];  
 
   void setUserData(String nome, String email, int idade) {
     this.nome = nome;
@@ -47,14 +47,14 @@ class UserData extends ChangeNotifier {
     notifyListeners();
   }
 
-  // Atualiza os dados de saúde e adiciona ao histórico com data
+  
   void updateHealthData(double peso, double altura, int pressao, int glicose, DateTime dataConsulta) {
     var data = UserHealthData(peso, altura, pressao, glicose, dataConsulta);
     healthDataHistory.add(data);
     notifyListeners();
   }
 
-  // Função para calcular IMC
+  
   double calculateIMC(double peso, double altura) {
     if (altura > 0) {
       return peso / (altura * altura);
@@ -409,7 +409,7 @@ class _TelaDadosSaudeState extends State<TelaDadosSaude> {
                   double.parse(_alturaController.text),
                   int.parse(_pressaoController.text),
                   int.parse(_glicoseController.text),
-                  DateTime.now(),  // Data de consulta é o momento atual
+                  DateTime.now(),  
                 );
                 Navigator.pushNamed(context, '/dados');
               },
